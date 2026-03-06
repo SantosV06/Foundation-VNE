@@ -68,3 +68,29 @@ const observer = new IntersectionObserver(entries=>{
 },{ threshold:0.2 });
 
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+/* =========================
+   AUTO-CLOSE MENU ON SCROLL (PC ONLY)
+========================= */
+
+let lastScroll = 0;
+
+window.addEventListener("scroll", ()=>{
+
+  const menu = document.getElementById("menu");
+  if(!menu) return;
+
+  const isDesktop = window.innerWidth >= 1024;
+  const currentScroll = window.scrollY;
+
+  if(isDesktop && menu.classList.contains("open")){
+
+    if(Math.abs(currentScroll - lastScroll) > 20){
+      menu.classList.remove("open");
+      document.body.classList.remove("menu-open");
+    }
+
+  }
+
+  lastScroll = currentScroll;
+});
