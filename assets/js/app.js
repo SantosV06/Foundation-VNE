@@ -1,0 +1,70 @@
+/* =========================
+   THEME (persistente)
+========================= */
+const savedTheme = localStorage.getItem("theme");
+const themeBtn = document.querySelector(".theme-btn");
+if (savedTheme === "dark" && !document.body.classList.contains("casas")) {
+  document.body.classList.add("dark");
+  if (themeBtn) {
+    themeBtn.textContent = "🌙";
+  }
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  if (themeBtn) {
+    themeBtn.textContent = isDark ? "🌙" : "🌓";
+  }
+}
+
+/* =========================
+   MENU LATERAL (mobile-safe)
+========================= */
+function toggleMenu(){
+  const menu = document.getElementById("menu");
+  if (!menu) return;
+
+  const isOpen = menu.classList.toggle("open");
+
+  // Bloquear scroll del body cuando el menú está abierto
+  document.body.style.overflow = isOpen ? "hidden" : "";
+}
+
+// Cerrar menú al hacer click en un enlace
+document.querySelectorAll(".menu a").forEach(link=>{
+  link.addEventListener("click", ()=>{
+    const menu = document.getElementById("menu");
+    if(!menu) return;
+
+    menu.classList.remove("open");
+    document.body.style.overflow = "";
+  });
+});
+
+// Cerrar menú con ESC
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape"){
+    const menu = document.getElementById("menu");
+    if(!menu) return;
+
+    menu.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+});
+
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target); // anima solo una vez
+    }
+  });
+},{ threshold:0.2 });
+
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
