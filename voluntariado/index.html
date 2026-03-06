@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Voluntariado | Proyecto Génesis · Fundación VNE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" href="../assets/img/LogoFundaciónVNE1.png">
+
+<link rel="stylesheet" href="../assets/css/main.css">
+
+</head>
+
+<body class="genesis-voluntariado">
+
+<header>
+  <div class="top-left" onclick="toggleTheme()">🌙</div>
+  <a class="top-right" href="../genesis/index.html" title="Volver">←</a>
+
+  <h1>Voluntariado</h1>
+  <p>
+    El voluntariado es una pieza clave dentro del modelo de impacto del Proyecto Génesis.
+    Buscamos personas comprometidas con el desarrollo social, económico y humano,
+    dispuestas a aportar su conocimiento, experiencia y tiempo para generar impacto real
+    y sostenible.
+  </p>
+</header>
+
+<section>
+  <h2>Solicitud de Voluntariado</h2>
+
+  <div class="box">
+    <form class="voluntariado-box" onsubmit="enviarWhatsApp(event)">
+      <input type="text" id="nombre" placeholder="Nombre" required>
+      <input type="text" id="apellido" placeholder="Apellido" required>
+      <input type="email" id="correo" placeholder="Correo electrónico" required>
+      <input type="tel" id="telefono" placeholder="Número de teléfono (con código de país)" required>
+
+      <small>Ejemplo: +99 123 456 789</small>
+
+      <button type="submit" class="btn btn-green">
+        Enviar solicitud por WhatsApp
+      </button>
+    </form>
+  </div>
+
+</section>
+
+<footer class="footer-vne-exact">
+  <div class="footer-inner">
+
+    <!-- COLUMNA 1 -->
+    <div class="footer-col">
+      <h2>Información de contacto</h2>
+
+      <p class="label">Números de teléfono</p>
+      <p>
+        <strong>administración y atención al cliente</strong><br>
+        Teléfono / WhatsApp: +1 (917) 597 9179
+      </p>
+
+      <p>
+        <strong>Oficina ejecutiva / Dirección general</strong><br>
+        Teléfono: +1 (347) 819 9521
+      </p>
+
+      <p class="label">Correo electrónico</p>
+      <p><strong>Consultas generales y administrativas</strong></p><br>
+      <p>info@foundationVNE.org</p>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/foundation.vne" target="_blank" aria-label="Instagram">
+          <img src="../assets/img/INSTAGRAM ICONO AZUL.png" alt="">
+        </a>
+        <span><img src="../assets/img/ICONO WHATSAPP AZUL.png" alt="WhatsApp"></span>
+        <span><img src="../assets/img/ICONO FACEBOOK AZUL.png" alt="Facebook"></span>
+        <span><img src="../assets/img/XXX AZUL ICONO.png" alt="X"></span>
+        <a href="../donaciones/index.html" aria-label="Zelle">
+         <img src="../assets/img/ZELLE ICONO AZUL.png" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- COLUMNA 2 -->
+    <div class="footer-col">
+      <h2>Sobre nosotros</h2>
+
+      <p>
+        Fundación Venezuela Nueva Esperanza LLC<br>
+        LLC con propósito social<br>
+        Registrada en el Estado de Nueva York – 2022
+      </p>
+
+      <p>
+        Address: 433 Sackett St, Brooklyn, NY 11231<br>
+        New York, NY, Estados Unidos<br>
+        EIN: 93-4222627
+      </p>
+
+      <h2 class="mt">Horario de atención</h2>
+      <p>
+        Lunes a viernes<br>
+        8:00 a.m. – 5:00 p.m.<br>
+        Fines de semana con cita previa
+      </p>
+    </div>
+
+    <!-- COLUMNA 3 -->
+    <div class="footer-col">
+      <h2>Asuntos legales y cumplimiento</h2>
+
+      <p class="small">
+        Fundación Venezuela Nueva Esperanza LLC opera de conformidad con las regulaciones<br>
+        federales y estatales aplicables. Todas sus actividades se llevan a cabo bajo esrándares<br>
+        internos de gobernanza, rendición de cuentas y transparencia.
+      </p>
+
+      <p class="links">
+        <a href="../politica_privacidad/index.html">Política de privacidad</a>|<a href="../terminos_condiciones/index.html">Términos y condiciones</a><br>
+        <a href="../politica_conflicto_intereses/index.html">Política de conflicto de intereses</a><br>
+        <a href="../politica_no_discriminacion/index.html">Política de no discriminación</a>
+      </p>
+      <div class="footer-logo">
+       <img src="../assets/img/LogoFundaciónVNE.png" alt="Foundation VNE">
+      </div>
+    </div>
+  </div>
+
+  <!-- FRANJA BLANCA INFERIOR -->
+  <div class="footer-bottom-exact">
+    © 2022–2026 Fundación Venezuela Nueva Esperanza LLC. Todos los derechos reservados.<br>
+    Este sitio web tiene fines meramente informativos y no constituye un compromiso legal ni financiero.
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  const icon=document.querySelector(".top-left");
+  icon.textContent=document.body.classList.contains("dark")?"☀️":"🌙";
+}
+
+function enviarWhatsApp(e){
+  e.preventDefault();
+
+  const nombre=document.getElementById('nombre').value.trim();
+  const apellido=document.getElementById('apellido').value.trim();
+  const correo=document.getElementById('correo').value.trim();
+  const telefono=document.getElementById('telefono').value.trim();
+
+  if(!nombre||!apellido||!correo||!telefono){
+    alert("Por favor completa todos los campos.");
+    return;
+  }
+
+  const numeroWhatsApp="13479579179";
+
+  const mensaje=
+`*Solicitud de Voluntariado – Proyecto Génesis*
+Nombre: ${nombre}
+Apellido: ${apellido}
+Correo: ${correo}
+Teléfono: ${telefono}`;
+
+  const url=`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url,"_blank");
+}
+</script>
+
+</body>
+</html>

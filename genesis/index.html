@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Proyecto Génesis | Inversión Social Productiva Sostenible</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Proyecto Génesis es una iniciativa de inversión social privada con impacto económico, enfocada en productividad real, creación de empresas, autosostenibilidad y escalabilidad institucional.">
+<meta name="keywords" content="Proyecto Génesis, inversión social, impacto económico, autosostenibilidad, emprendimiento, desarrollo productivo, Fundación VNE">
+<meta name="author" content="Fundación Venezuela Nueva Esperanza">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Proyecto Génesis | Inversión Social Productiva">
+<meta property="og:description" content="Invertir en sistemas productivos autosostenibles, con impacto medible y escalables a políticas públicas.">
+<meta property="og:image" content="../assets/img/LogoFundaciónVNE.png">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/png" href="../assets/img/LogoFundaciónVNE1.png">
+
+<style>
+:root{
+  --verde-oscuro:#083224;
+  --verde:#54b23e;
+  --verde-sec:#457d58;
+  --verde-alt:#073224;
+  --blanco:#ffffff;
+  --negro:#000000;
+  --gris:#f3f5f7;
+  --dorado-1:#cdad7d;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+body{
+  margin:0;
+  background:var(--gris);
+  color:#111;
+  scroll-behavior:smooth;
+}
+
+body.dark{
+  background:#0c0c0c;
+  color:var(--blanco);
+}
+
+/* HEADER */
+header{
+  background:url("../assets/img/FondoGénesis.png") center/cover no-repeat;
+  color:var(--blanco);
+  padding:110px 20px 95px;
+  text-align:center;
+  position:relative;
+}
+
+header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.45);
+}
+
+header > *{
+  position:relative;
+  z-index:1;
+}
+
+.header-inner{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.header-inner img{
+  width:90px;
+}
+
+header h1{
+  font-size:3.2rem;
+  margin:0;
+}
+
+header p{
+  max-width:980px;
+  margin:30px auto 0;
+  font-size:1.15rem;
+  line-height:1.9;
+}
+
+/* BOTONES SUPERIORES */
+.top-left,.top-right{
+  position:absolute;
+  top:22px;
+  font-size:1.6rem;
+  cursor:pointer;
+}
+
+.top-left{left:22px;}
+.top-right{right:22px;}
+
+/* MENU */
+.menu{
+  position:fixed;
+  top:0;
+  right:-330px;
+  width:330px;
+  height:100%;
+  background:var(--verde-alt);
+  padding:35px 25px;
+  transition:.35s;
+  z-index:1000;
+}
+
+.menu.open{right:0;}
+
+.menu .back{
+  color:var(--verde);
+  font-weight:bold;
+  margin-bottom:25px;
+  cursor:pointer;
+}
+
+.menu a{
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  margin:18px 0;
+  font-size:1.05rem;
+}
+
+/* SECCIONES */
+section{
+  max-width:1150px;
+  margin:105px auto;
+  padding:0 20px;
+  text-align:center;
+}
+
+h2{
+  font-size:2.5rem;
+  margin-bottom:30px;
+  color:var(--verde-oscuro);
+}
+
+body.dark h2{color:var(--verde);}
+
+h3{
+  font-size:2.5rem;
+  margin-bottom:30px;
+  color:var(--dorado-1);
+}
+
+body.dark h2{color:var(--dorado-1);}
+
+.box{
+  background:#e9f7ee;
+  padding:60px;
+  border-radius:24px;
+  box-shadow:0 18px 42px rgba(0,0,0,.08);
+  line-height:2;
+  text-align:left;
+  color: #0e2b1f;
+}
+
+body.dark .box{
+  background:#153d2c;
+  color: #ffffff;
+}
+
+.split-box{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:50px;
+  align-items:center;
+}
+
+.split-box img{
+  width:100%;
+  max-height:360px;
+  object-fit:contain;
+}
+
+
+/* LISTAS */
+ul{
+  padding-left:20px;
+}
+
+ul li{
+  margin:12px 0;
+}
+
+/* PILARES */
+.pilares{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  margin-top:50px;
+}
+
+.pilar{
+  background:#e9f7ee;
+  padding:35px;
+  border-radius:22px;
+  box-shadow:0 12px 30px rgba(0,0,0,.06);
+}
+
+body.dark .pilar{
+  background:#153d2c;
+}
+
+/* CTA */
+.cta{
+  margin-top:45px;
+  text-align:center;
+}
+
+.cta a{
+  display:inline-block;
+  padding:18px 42px;
+  background:#ffffff;
+  color:var(--verde-oscuro);
+  text-decoration:none;
+  border-radius: 45px;
+  font-weight:bold;
+  border: 2px solid var(--verde);
+  transition: .3s;
+}
+
+.cta a:hover{
+  background: var(--verde);
+  color: #fff;
+}
+
+/* ANIMACIONES */
+.fade{
+  opacity:0;
+  transform:translateY(45px);
+  transition:all .9s ease;
+}
+
+.fade.show{
+  opacity:1;
+  transform:none;
+}
+
+.program-impact{
+  background:#0b3a2a;
+  padding:100px 20px;
+  color:#ffffff;
+}
+
+.program-impact h2{
+  color:#ffffff;
+  text-align:left;
+  max-width:1150px;
+  margin:0 auto 40px;
+}
+
+.impact-content{
+  max-width:1150px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:50px;
+  align-items:center;
+}
+
+.impact-image-box{
+  background:#073224;
+  padding:22px;
+  border-radius:28px;
+  box-shadow:0 22px 45px rgba(0,0,0,.45);
+}
+
+.impact-image-box img{
+  width:100%;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  display:block;
+}
+
+.impact-card{
+  background:#ffffff;
+  color:#0e2b1f;
+  padding:28px;
+  border-radius:12px;
+  box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.impact-card h3{
+  margin-top:0;
+  color:#0e2b1f;
+}
+
+.impact-card ul{
+  padding-left:18px;
+}
+
+/* FOOTER */
+
+.footer-vne-exact{
+  background:#073224;
+  color:#e6e6e6;
+  font-size:.85rem;
+}
+
+.footer-inner{
+  max-width:1300px;
+  margin:0 auto;
+  padding:60px 40px 50px;
+  display:grid;
+  grid-template-columns:1.2fr 1.1fr 1.2fr;
+  gap:60px;
+  align-items:flex-start;
+}
+
+.footer-col h3{
+  background:none;
+  font-family:'Libre Baskerville',serif;
+  font-size:.95rem;
+  margin-bottom:18px;
+  color:#f0d6a4;
+  -webkit-text-fill-color:initial;
+}
+
+.footer-col .mt{
+  margin-top:32px;
+}
+
+.footer-col p{
+  line-height:1.8;
+  margin-bottom:14px;
+  color:#e6e6e6;
+}
+
+.footer-col .label{
+  font-size:.75rem;
+  opacity:.8;
+  margin-bottom:4px;
+}
+
+.footer-col .small{
+  font-size:.78rem;
+  opacity:.85;
+}
+
+.footer-col .links a{
+  color:#f0d6a4;
+  text-decoration:none;
+  display:inline-block;
+  margin-bottom:6px;
+}
+
+.footer-col .links a:hover{
+  text-decoration:underline;
+}
+
+.footer-social{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+}
+
+.footer-social span{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  border:1px solid #073224;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:#f0d6a4;
+  font-size:.6rem;
+}
+
+.footer-social span img{
+  width:30px;
+  height:30px;
+  object-fit:contain;
+}
+
+.footer-logo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.footer-logo img{
+  max-width:180px;
+}
+
+.footer-social a{
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  border:1px solid var(--dorado-1);
+}
+
+.footer-social a img{
+  width:16px;
+  height:16px;
+  object-fit:contain;
+  display:block;
+}
+
+/* FRANJA BLANCA */
+.footer-bottom-exact{
+  background:#ffffff;
+  color:#222;
+  text-align:center;
+  padding:18px 12px;
+  font-size:.72rem;
+  line-height:1.6;
+}
+
+
+/* ============================= */
+/* 📱 RESPONSIVE – MOBILE FIX */
+/* ============================= */
+@media (max-width: 768px){
+
+  /* SECCIONES */
+  section{
+    min-height:auto;
+    margin:60px auto;
+    padding:40px 16px;
+  }
+
+  /* GRIDS → UNA COLUMNA */
+  .split,
+  .split-box,
+  .hero,
+  .sector,
+  .impact-content{
+    grid-template-columns:1fr !important;
+  }
+
+  .sector.reverse{
+    grid-template-columns:1fr !important;
+  }
+
+  /* ORDEN CORRECTO */
+  .sector video,
+  .sector img{
+    order:-1;
+  }
+
+  /* TITULOS */
+  h1{
+    font-size:2.1rem;
+  }
+
+  h2{
+    font-size:1.9rem;
+  }
+
+  h3{
+    font-size:1.9rem;
+  }
+
+  /* VIDEOS */
+  video{
+    max-height:220px;
+    border-radius:16px;
+  }
+
+  /* IMÁGENES */
+  img{
+    max-width:100%;
+    height:auto;
+  }
+
+  /* CAJAS */
+  .box{
+    padding:32px 24px;
+  }
+
+  /* HERO */
+  header{
+    padding:80px 16px;
+  }
+
+  /* PROGRAM IMPACT */
+  .program-impact{
+    padding:60px 16px;
+  }
+
+  .impact-image-box{
+    padding:16px;
+  }
+}
+
+  @media(max-width:1024px){
+  .footer-inner{
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+
+  .footer-logo{
+    grid-column:1 / -1;
+  }
+}
+
+@media(max-width:600px){
+  .footer-inner{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .footer-social{
+    justify-content:center;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<div class="menu" id="menu">
+  <div class="back" onclick="toggleMenu()">← Volver</div>
+  <a href="../index.html">Fundación VNE</a>
+  <a href="../ceo/index.html">CEO</a>
+  <a href="../casas/index.html">Casas VNE</a>
+  <a href="../soporte/index.html">Soporte</a>
+  <a href="../terminos_condiciones/index.html"></a>
+</div>
+
+<header>
+  <div class="top-left" onclick="toggleTheme()">🌓</div>
+  <div class="top-right" onclick="toggleMenu()">☰</div>
+
+  <div class="header-inner">
+    <h1>Proyecto Génesis</h1>
+  </div>
+
+  <p>
+    Iniciativa de inversión social privada con impacto económico, diseñada para crear
+    sistemas productivos autosostenibles, medibles y escalables.
+  </p>
+</header>
+
+<section class="fade">
+<h2>¿Qué es Proyecto Génesis?</h2>
+<div class="box">
+Proyecto Génesis es una iniciativa de inversión social privada con impacto económico,
+diseñada para crear alternativas estructurales a los modelos tradicionales de asistencia
+prolongada.<br><br>
+
+El proyecto propone un enfoque basado en productividad real, creación de empresas y
+generación de ingresos propios, orientado a transformar poblaciones actualmente excluidas
+de rutas económicas estables en operadores productivos, emprendedores y actores económicos
+formales.<br><br>
+
+Su diseño prioriza la autosuficiencia, la responsabilidad económica progresiva y la
+integración productiva, sin ampliar la estructura del Estado ni depender de financiamiento
+público permanente.
+<div class="cta">
+  <a href="../assets/img/ProyectoGénesis.pdf" download>
+    DESCARGA PROYECTO GÉNESIS (PDF)
+  </a>
+</div>
+</div>
+</section>
+
+<section class="fade">
+<h2>Modelo de inversión</h2>
+<div class="box">
+El Modelo de Inversión del Proyecto Génesis se basa en la creación de ecosistemas económicos
+autónomos y valor público medible.<br><br>
+
+El capital no se destina a asistencia, sino a la creación de infraestructura productiva
+(complejo agroturístico, emprendimientos y servicios) que genera ingresos reales, se
+autosostiene y reinvierte su propio flujo económico para crecer y replicarse.<br><br>
+
+<strong>La inversión impulsa:</strong>
+<ul>
+<li>Infraestructura productiva inicial</li>
+<li>Incubación de microemprendimientos formales</li>
+<li>Generación de actividad económica sostenible</li>
+</ul>
+
+<strong>El retorno se expresa en:</strong>
+<ul>
+<li>Sostenibilidad financiera del ecosistema</li>
+<li>Reducción de dependencia asistencial</li>
+<li>Creación de nuevas unidades económicas</li>
+<li>Evidencia concreta para escalabilidad y adopción institucional</li>
+</ul>
+
+<em>“Invertir en Génesis es invertir en sistemas productivos que se sostienen solos,
+generan impacto medible y pueden escalar a políticas públicas.”</em>
+<div class="cta">
+  <a href="../donaciones/index.html">
+    Apoya Donando
+  </a>
+</div>
+</div>
+</section>
+
+<section class="fade">
+<h2>Modelo piloto en Estados Unidos</h2>
+<div class="box">
+Como fase inicial, Proyecto Génesis contempla la implementación de un piloto en Estados
+Unidos, mediante el desarrollo de un complejo agroturístico sostenible en una zona rural
+del estado de Nueva York.<br><br>
+
+Este complejo funcionará como:
+<ul>
+<li>Núcleo productivo integral</li>
+<li>Motor financiero del ecosistema</li>
+<li>Plataforma de validación del modelo</li>
+</ul>
+
+En él se desarrollarán actividades de los sectores primario, secundario y terciario,
+incluyendo:
+<ul>
+<li>Producción agroalimentaria</li>
+<li>Transformación básica de productos</li>
+<li>Turismo experiencial</li>
+<li>Comercialización directa</li>
+<li>Prestación de servicios asociados</li>
+</ul>
+
+Esta diversificación permite la creación de una microeconomía funcional, capaz de adaptarse
+a la demanda local y regional.
+</div>
+</section>
+
+<section class="fade">
+<h2>Autosostenibilidad y generación de empresas</h2>
+<div class="box">
+Proyecto Génesis está diseñado bajo una lógica de autosostenibilidad económica.<br><br>
+
+Los ingresos generados por las actividades del complejo permiten:
+<ul>
+<li>Cubrir costos operativos</li>
+<li>Reinvertir en infraestructura</li>
+<li>Facilitar la creación de nuevos microemprendimientos</li>
+</ul>
+
+El objetivo es consolidar unidades económicas formales, capaces de operar dentro del marco
+legal estadounidense, sin requerir subsidios continuos y generando impacto económico real.
+</div>
+</section>
+
+<section class="fade">
+<h2>Escalabilidad y replicabilidad</h2>
+
+<div class="box split-box">
+
+  <img src="../assets/img/Escalabilidad.png" alt="Escalabilidad del modelo Génesis">
+
+  <div>
+    Desde su origen, Proyecto Génesis ha sido concebido como un modelo replicable y escalable,
+    no como una intervención aislada.<br><br>
+
+    Su diseño modular permite:
+    <ul>
+      <li>Iniciar operaciones a pequeña escala</li>
+      <li>Validar resultados mediante evidencia concreta</li>
+      <li>Expandirse progresivamente incorporando nuevos módulos productivos</li>
+    </ul>
+
+    El modelo puede adaptarse a distintos territorios dentro de Estados Unidos y,
+    posteriormente, replicarse en países de América Latina como Panamá y Venezuela,
+    manteniendo coherencia operativa y financiera.
+  </div>
+
+</div>
+</section>
+
+<section class="fade">
+<h2>Valor institucional y retorno estratégico</h2>
+<div class="box">
+Proyecto Génesis genera valor público e institucional al ofrecer una herramienta innovadora
+de integración económica basada en:
+<ul>
+<li>Resultados medibles</li>
+<li>Responsabilidad fiscal</li>
+<li>Actividad productiva formal</li>
+</ul>
+
+Al producir evidencia real sobre alternativas sostenibles a la asistencia prolongada,
+el proyecto contribuye a fortalecer la toma de decisiones estratégicas y posiciona a los
+actores involucrados como impulsores de soluciones estructurales de largo plazo.
+</div>
+</section>
+
+<section class="program-impact fade">
+
+  <h2>Program Impact</h2>
+
+  <div class="impact-content">
+
+    <div class="impact-image-box">
+    <img src="../assets/img/ProgramImpact.png" alt="Impacto del programa Proyecto Génesis">
+    </div>
+    <div class="impact-card">
+      <h3>Asia</h3>
+      <ul>
+        <li>23 Programs</li>
+        <li>2,398 Volunteers</li>
+        <li>335,665 Beneficiaries</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="fade">
+<h2>Participación e inversión estratégica</h2>
+<div class="box">
+Proyecto Génesis está abierto a la participación de:
+<ul>
+<li>Inversores sociales privados</li>
+<li>Empresarios</li>
+<li>Aliados estratégicos</li>
+<li>Instituciones interesadas en modelos sostenibles de desarrollo económico</li>
+</ul>
+
+La participación se estructura bajo esquemas claros, alineados con la sostenibilidad
+financiera, el impacto medible y la proyección a largo plazo del modelo.
+<div class="cta">
+<a href="../voluntariado/index.html">Conoce cómo participar en Proyecto Génesis</a>
+</div>
+</div>
+</section>
+
+<footer class="footer-vne-exact">
+  <div class="footer-inner">
+
+    <!-- COLUMNA 1 -->
+    <div class="footer-col">
+      <h3>Información de contacto</h3>
+
+      <p class="label">Números de teléfono</p>
+      <p>
+        <strong>administración y atención al cliente</strong><br>
+        Teléfono / WhatsApp: +1 (917) 597 9179
+      </p>
+
+      <p>
+        <strong>Oficina ejecutiva / Dirección general</strong><br>
+        Teléfono: +1 (347) 819 9521
+      </p>
+
+      <p class="label">Correo electrónico</p>
+      <p><strong>Consultas generales y administrativas</strong></p><br>
+      <p>info@foundationVNE.org</p>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/foundation.vne" target="_blank" aria-label="Instagram">
+          <img src="../assets/img/ICONO INSTAGRAM VERDE.png" alt="">
+        </a>
+        <span><img src="../assets/img/ICONO WHATSAPP VERDE.png" alt="WhatsApp"></span>
+        <span><img src="../assets/img/ICONO FACEBOOK VERDE.png" alt="Facebook"></span>
+        <span><img src="../assets/img/XXX ICONO VERDE.png" alt="X"></span>
+        <a href="../donaciones/index.html" aria-label="Zelle">
+         <img src="../assets/img/ZELLE ICONO AZUL.png" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- COLUMNA 2 -->
+    <div class="footer-col">
+      <h3>Sobre nosotros</h3>
+
+      <p>
+        Fundación Venezuela Nueva Esperanza LLC<br>
+        LLC con propósito social<br>
+        Registrada en el Estado de Nueva York – 2022
+      </p>
+
+      <p>
+        Address: 433 Sackett St, Brooklyn, NY 11231<br>
+        New York, NY, Estados Unidos<br>
+        EIN: 93-4222627
+      </p>
+
+      <h3 class="mt">Horario de atención</h3>
+      <p>
+        Lunes a viernes<br>
+        8:00 a.m. – 5:00 p.m.<br>
+        Fines de semana con cita previa
+      </p>
+    </div>
+
+    <!-- COLUMNA 3 -->
+    <div class="footer-col">
+      <h3>Asuntos legales y cumplimiento</h3>
+
+      <p class="small">
+        Fundación Venezuela Nueva Esperanza LLC opera de conformidad con las regulaciones<br>
+        federales y estatales aplicables. Todas sus actividades se llevan a cabo bajo esrándares<br>
+        internos de gobernanza, rendición de cuentas y transparencia.
+      </p>
+
+      <p class="links">
+        <a href="../politica_privacidad/index.html">Política de privacidad</a>|<a href="../terminos_condiciones/index.html">Términos y condiciones</a><br>
+        <a href="../politica_conflicto_intereses/index.html">Política de conflicto de intereses</a><br>
+        <a href="../politica_no_discriminacion/index.html">Política de no discriminación</a>
+      </p>
+      <div class="footer-logo">
+       <img src="../assets/img/LogoProyGén1.png" alt="Foundation VNE">
+      </div>
+    </div>
+  </div>
+
+  <!-- FRANJA BLANCA INFERIOR -->
+  <div class="footer-bottom-exact">
+    © 2022–2026 Fundación Venezuela Nueva Esperanza LLC. Todos los derechos reservados.<br>
+    Este sitio web tiene fines meramente informativos y no constituye un compromiso legal ni financiero.
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const menu = document.getElementById("menu");
+  if (!menu) return;
+  const isOpen = menu.classList.toggle("open");
+  // Bloquear scroll del body cuando el menú está abierto
+  document.body.style.overflow = isOpen ? "hidden" : "";
+}
+function toggleTheme(){document.body.classList.toggle("dark")}
+function toggleMenu(){document.getElementById("menu").classList.toggle("open")}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")})
+},{threshold:.2})
+
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el))
+</script>
+
+</body>
+</html>
