@@ -134,13 +134,15 @@
 </footer>
 
 <script>
+
 function toggleTheme(){
   document.body.classList.toggle("dark");
   const icon=document.querySelector(".top-left");
   icon.textContent=document.body.classList.contains("dark")?"☀️":"🌙";
 }
 
-function enviarWhatsApp(e){
+async function enviarFormulario(e){
+
   e.preventDefault();
 
   const nombre=document.getElementById('nombre').value.trim();
@@ -149,21 +151,40 @@ function enviarWhatsApp(e){
   const telefono=document.getElementById('telefono').value.trim();
 
   if(!nombre||!apellido||!correo||!telefono){
-    alert("Por favor completa todos los campos.");
+    alert("Completa todos los campos");
     return;
   }
+
+  // guardar en D1
+
+  await fetch("/api/voluntariado",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      nombre,
+      apellido,
+      correo,
+      telefono
+    })
+  });
+
+  // luego enviar WhatsApp
 
   const numeroWhatsApp="13479579179";
 
   const mensaje=
-`*Solicitud de Voluntariado – Proyecto Génesis*
+`Solicitud de Voluntariado – Proyecto Génesis
 Nombre: ${nombre}
 Apellido: ${apellido}
 Correo: ${correo}
 Teléfono: ${telefono}`;
 
   const url=`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
   window.open(url,"_blank");
+
 }
 </script>
 
