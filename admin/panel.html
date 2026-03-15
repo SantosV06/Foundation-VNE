@@ -1,59 +1,58 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Panel Admin | ServiTec</title>
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="icon" type="image/png" href="../assets/img/ServiTec.png">
+<meta charset="UTF-8">
+<title>Admin</title>
 </head>
-
 <body>
 
-<header>
-<h1>Panel de Solicitudes</h1>
-<h2 id="contador"></h2>
-</header>
+<h2>Voluntarios</h2>
 
-<section>
-
-<div class="box">
-
-<button class="btn" onclick="logout()">Cerrar sesión</button>
-
-<br><br>
-
-<div style="overflow-x:auto">
-
-<table id="tabla">
-
-<thead>
+<table border="1" id="tabla">
 <tr>
-<th>Fecha</th>
+<th>ID</th>
 <th>Nombre</th>
-<th>Teléfono</th>
+<th>Apellido</th>
 <th>Correo</th>
-<th>Mensaje</th>
-<th>Acción</th>
+<th>Telefono</th>
+<th>Fecha</th>
 </tr>
-</thead>
-
-<tbody></tbody>
-
 </table>
 
-</div>
+<script>
 
-</div>
+if(sessionStorage.getItem("admin")!="1"){
+  location="/admin/login.html";
+}
 
-</section>
+async function cargar(){
 
-<footer>
-© 2026 ServiTec Pmá
-</footer>
+  const r=await fetch("/api/get-voluntarios");
 
-<script src="../assets/js/app.js" defer></script>
+  const data=await r.json();
+
+  const t=document.getElementById("tabla");
+
+  data.forEach(v=>{
+
+    t.innerHTML+=`
+    <tr>
+    <td>${v.id}</td>
+    <td>${v.nombre}</td>
+    <td>${v.apellido}</td>
+    <td>${v.correo}</td>
+    <td>${v.telefono}</td>
+    <td>${v.fecha}</td>
+    </tr>
+    `;
+
+  });
+
+}
+
+cargar();
+
+</script>
 
 </body>
-
 </html>
