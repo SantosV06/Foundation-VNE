@@ -155,9 +155,7 @@ async function enviarFormulario(e){
     return;
   }
 
-  // guardar en D1
-
-  await fetch("/api/voluntariado",{
+  const r = await fetch("/api/voluntariado",{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -170,22 +168,16 @@ async function enviarFormulario(e){
     })
   });
 
-  // luego enviar WhatsApp
+  if(!r.ok){
 
-  //const numeroWhatsApp="13479579179";
+    alert("Error al enviar solicitud");
+    return;
 
-  //const mensaje=
-//`Solicitud de Voluntariado – Proyecto Génesis
-//Nombre: ${nombre}
-//Apellido: ${apellido}
-//Correo: ${correo}
-//Teléfono: ${telefono}`;
+  }
 
-  //const url=`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
-  //window.open(url,"_blank");
-
+  alert("Solicitud enviada correctamente ✅");
 }
+  
 </script>
 
 </body>
