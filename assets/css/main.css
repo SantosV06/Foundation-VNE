@@ -796,7 +796,7 @@ iframe{
   width:30px;
   height:30px;
   border-radius:50%;
-  border:1px solid (--azul);
+  border:1px solid var(--azul);
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -822,6 +822,15 @@ iframe{
   padding:18px 12px;
   font-size:.72rem;
   line-height:1.6;
+}
+
+.footer-email{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-email:hover{
+  color: #ccc;
 }
 
 /* ICONOS SOCIALES FOOTER */
